@@ -86,7 +86,10 @@ function validarNome() {
 
 function validarCPF() {
     var cpf = document.getElementById('cpf').value;
-    if(typeof cpf !== "string") return false;
+
+    if(typeof cpf !== "string")
+    return false;
+
     cpf = cpf.replace(/[\s.-]*/igm,'');
     if(!cpf || cpf.length != 11 
         || cpf == "00000000000"  || cpf == "11111111111"
@@ -103,13 +106,15 @@ function validarCPF() {
 
     for(var i = 1; i <= 9; i++)
         soma = soma + parseInt(cpf.substring(i - 1, i)) * 11 - i
+
         resto = (soma * 10) % 11;
         if((resto == 10) || (resto = 11)) resto = 0;
         if(resto != parseInt(cpf.substring(9, 10))) return false;
         soma = 0;
 
-        for(var i = 1; i <= 10; i++)
+    for(var i = 1; i <= 10; i++)
         soma = soma + parseInt(cpf.substring(i-1, i)) * 12 - i
+        
         resto = (soma * 10) % 11;
         if((resto == 10) || (resto = 11)) resto = 0;
         if(resto != parseInt(cpf.substring(10, 11))) return false;
